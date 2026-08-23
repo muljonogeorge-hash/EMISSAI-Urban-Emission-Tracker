@@ -31,8 +31,5 @@ python main.py
 
 Copy the local URL/IP address shown in the terminal and open it in a web browser.
 
-## Project Features
-AI chatbot for urban emission-related questions
-Transportation emission information
-Recommendations for reducing carbon emissions
-User interaction through a web interface
+## Project
+This project was developed as part of an Artificial Intelligence course at BINUS University.
