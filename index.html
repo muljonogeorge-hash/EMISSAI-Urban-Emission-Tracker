@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Quality</title>
+    <link rel="stylesheet" href="styles.css"> </head>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; background-color: #0c2b4e; }
+        h1 { text-align: center; color:#f4f4f4; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, Times, serif; font-weight:bold; }
+        h2 { color:#f4f4f4; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, Times, serif; }
+        textarea { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 50px; resize: vertical; }
+        button { text-align: center; padding: 10px 15px; background-color: #1d546c; color: #f4f4f4; border: none; border-radius: 50px; cursor: pointer; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif}
+        button:hover { background-color: #123646; }
+        #response-area { width: 100%; margin-top: 20px; padding: 15px; border: 1px solid #eee; background-color: #f9f9f9; border-radius: 50px; white-space: pre-wrap; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif}
+    </style>
+</head>
+<body>
+    <div class="center-container">
+        <div class="centered-content">
+    <h1>Want to know your city’s air quality?</h1>
+
+    <textarea id="prompt-input" rows="1" placeholder="Type your city or location here..."></textarea>
+    <button onclick="sendPrompt()">Proceed</button>
+
+    <div id="response-area">Waiting for location...</div>
+
+    </div>
+    </div>
+
+    <script>
+        async function sendPrompt() {
+            const promptInput = document.getElementById('prompt-input');
+            const responseArea = document.getElementById('response-area');
+            const prompt = promptInput.value;
+
+            if (!prompt) {
+                alert("Please enter a prompt.");
+                return;
+            }
+
+            // Show a loading state
+            responseArea.innerHTML = 'Thinking... (Please wait)';
+
+            try {
+                // 1. Send the prompt to the local Flask API
+                const response = await fetch('/api/generate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ prompt: prompt })
+                });
+
+                const data = await response.json();
+
+                // 2. Handle the response
+                if (response.ok) {
+                    // Success: Display the generated text
+                    responseArea.innerText = data.generated_text;
+                } else {
+                    // Error: Display the error message
+                    responseArea.innerText = `Error: ${data.error || 'Unknown error'}`;
+                }
+
+            } catch (error) {
+                console.error('Fetch error:', error);
+                responseArea.innerText = 'An error occurred while connecting to the server.';
+            }
+        }
+    </script>
+</body>
+</html>
