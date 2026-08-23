@@ -1,2 +1,2 @@
 # EMISSAI-Urban-Emission-Tracker
-AI-based urban emission tracking application using machine learning, Python, Flask, and HTML.
+AI-powered urban emission tracking chatbot using Python, Gemini API, and HTML.
