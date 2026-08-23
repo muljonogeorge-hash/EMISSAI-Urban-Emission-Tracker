@@ -18,17 +18,19 @@ that can help reduce carbon emissions.
 Open Command Prompt in the project directory and run:
 
 ```cmd
+
 set GEMINI_API_KEY=YOUR_API_KEY
 
 Replace YOUR_API_KEY with your API key from Google AI Studio.
-
-2. Run the application
+```
+### 2. Run the application
 python main.py
-3. Open the application
+
+### 3. Open the application
 
 Copy the local URL/IP address shown in the terminal and open it in a web browser.
 
-Project Features
+## Project Features
 AI chatbot for urban emission-related questions
 Transportation emission information
 Recommendations for reducing carbon emissions
