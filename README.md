@@ -24,8 +24,9 @@ set GEMINI_API_KEY=YOUR_API_KEY
 Replace YOUR_API_KEY with your API key from Google AI Studio.
 
 ### 2. Run the application
+```cmd
 python main.py
-
+```
 ### 3. Open the application
 
 Copy the local URL/IP address shown in the terminal and open it in a web browser.
