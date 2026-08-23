@@ -20,9 +20,9 @@ Open Command Prompt in the project directory and run:
 ```cmd
 
 set GEMINI_API_KEY=YOUR_API_KEY
-
-Replace YOUR_API_KEY with your API key from Google AI Studio.
 ```
+Replace YOUR_API_KEY with your API key from Google AI Studio.
+
 ### 2. Run the application
 python main.py
 
